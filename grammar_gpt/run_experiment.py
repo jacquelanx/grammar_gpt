@@ -9,10 +9,9 @@ import torch
 
 from .tokenization import SimpleTokenizer
 from .grammars import GrammarVocab
-
-from data_pipeline import DataSpec, build_datasets
-from train import TrainConfig, train_one
-from gpt_small import GPTConfig, GPTSmall
+from .data_pipeline import DataSpec, build_datasets
+from .train import TrainConfig, train_one
+from .gpt_small import GPTConfig, GPTSmall
 
 
 def load_tokenizer(path: str) -> SimpleTokenizer:

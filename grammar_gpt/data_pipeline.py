@@ -12,7 +12,7 @@ from __future__ import annotations
 import os
 import json
 import random
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, asdict, field
 from typing import Dict, List, Tuple
 
 import torch
@@ -34,8 +34,21 @@ class DataSpec:
     mix_b_fraction_from_B: float = 0.05  # 5% GrammarB, 95% GrammarA
 
     # sentence generation settings (keep comparable across conditions)
-    gen_cfg_A: GenConfig = GenConfig(p_add_pp=0.7, p_add_rc=0.0, p_use_transitive=0.0)
-    gen_cfg_B: GenConfig = GenConfig(p_add_pp=0.7, p_add_rc=0.0, p_use_transitive=0.0)
+    gen_cfg_A: GenConfig = field(
+        default_factory=lambda: GenConfig(
+            p_add_pp=0.7,
+            p_add_rc=0.0,
+            p_use_transitive=0.0,
+        )
+    )
+
+    gen_cfg_B: GenConfig = field(
+        default_factory=lambda: GenConfig(
+            p_add_pp=0.7,
+            p_add_rc=0.0,
+            p_use_transitive=0.0,
+        )
+    )
 
     # sequence/block settings
     block_size: int = 64
@@ -43,7 +56,11 @@ class DataSpec:
 
     # lexical-role holdout (optional): keep nouns from appearing as SUBJECT in training
     # (you’ll still evaluate them as subjects in Suite 3 holdout_lexrole)
-    holdout_subject_nouns: Tuple[str, ...] = ("senator", "senators")
+    holdout_subject_nouns: Tuple[str, ...] = (
+        "senator", "senators",
+        "doctor", "doctors",
+        "pilot", "pilots",
+    )
 
 
 def _write_json(path: str, obj: Dict):

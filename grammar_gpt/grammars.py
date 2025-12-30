@@ -8,13 +8,21 @@ import random
 @dataclass(frozen=True)
 class GrammarVocab:
     det: Tuple[str, ...] = ("the", "a")
-    n_sg: Tuple[str, ...] = ("cat", "dog", "robot", "senator")
-    n_pl: Tuple[str, ...] = ("cats", "dogs", "robots", "senators")
-    p: Tuple[str, ...] = ("near", "with")
-    iv_sg: Tuple[str, ...] = ("sleeps", "runs")
-    iv_pl: Tuple[str, ...] = ("sleep", "run")
-    tv_sg: Tuple[str, ...] = ("sees", "likes")
-    tv_pl: Tuple[str, ...] = ("see", "like")
+    n_sg: Tuple[str, ...] = (
+        "cat", "dog", "robot", "senator",
+        "child", "teacher", "artist", "scientist",
+        "pilot", "soldier", "student", "doctor"
+    )
+    n_pl: Tuple[str, ...] = (
+        "cats", "dogs", "robots", "senators",
+        "children", "teachers", "artists", "scientists",
+        "pilots", "soldiers", "students", "doctors"
+    )
+    p: Tuple[str, ...] = ("near", "with", "behind", "beside")
+    iv_sg: Tuple[str, ...] = ("sleeps", "runs", "laughs", "falls")
+    iv_pl: Tuple[str, ...] = ("sleep", "run", "laugh", "fall")
+    tv_sg: Tuple[str, ...] = ("sees", "likes", "meets", "follows")
+    tv_pl: Tuple[str, ...] = ("see", "like", "meet", "follow")
     rel: Tuple[str, ...] = ("that",)
 
     def all_word_tokens(self) -> List[str]:

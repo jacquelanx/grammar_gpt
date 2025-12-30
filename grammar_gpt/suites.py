@@ -19,7 +19,11 @@ class EvalSpec:
     sanity_sg_prob: float = 0.5
 
     # lexical-role holdout: subject noun(s) that were never used as subjects in training
-    holdout_subject_nouns: Tuple[str, ...] = ("senator", "senators")
+    holdout_subject_nouns: Tuple[str, ...] = (
+        "senator", "senators",
+        "doctor", "doctors",
+        "pilot", "pilots",
+    )
 
 
 # Builds conflict pairs

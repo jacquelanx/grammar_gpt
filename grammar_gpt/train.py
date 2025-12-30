@@ -11,7 +11,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from gpt_small import GPTConfig, GPTSmall
+from .gpt_small import GPTConfig, GPTSmall
 
 
 @dataclass
